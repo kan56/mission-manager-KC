@@ -3,12 +3,16 @@ console.log("hello,world!");
 var time = new Date();
 
 $(function(){
-    $(".btn").on("click",function(){
+    $(".dayryBtn").on("click",function(){
         if($(this).hasClass("disabled")){
             if(confirm($(this).text() + "を未達成の状態に戻しますか？")){
+                $(this).removeClass("btn-secondary");
+                $(this).addClass("btn-primary");
                 $(this).removeClass("disabled");
             }
         }else{
+            $(this).removeClass("btn-primary");
+            $(this).addClass("btn-secondary");
             $(this).addClass("disabled");
         }
     });
