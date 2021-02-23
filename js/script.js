@@ -31,10 +31,10 @@ $(function(){
         }
     });
 
-    $("#dayrytime").text("残り" + (24 - time.getHours()) + "時間" + (60 - time.getMinutes()) + "分");
+    $("#dayrytime").text("残り" + (23 - time.getHours()) + "時間" + (59 - time.getMinutes()) + "分");
 
     setInterval(function(){
         time = new Date();
-        $("#dayrytime").text("残り" + (24 - time.getHours()) + "時間" + (60 - time.getMinutes()) + "分");
+        $("#dayrytime").text("残り" + (23 - time.getHours()) + "時間" + (59 - time.getMinutes()) + "分");
     },1000*60)
 });
