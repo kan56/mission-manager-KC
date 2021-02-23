@@ -14,6 +14,15 @@ $(function(){
             $(this).removeClass("btn-primary");
             $(this).addClass("btn-secondary");
             $(this).addClass("disabled");
+            var parent = $(this).parent();
+
+            for(var i = 0;i < parent.children("button").length;i ++){
+                if(!$(parent[0].children.item(i)).hasClass("disabled")){
+                    break;
+                }else if(i === parent.children("button").length - 1){
+                    parent.css("background-color","#ffffaa");
+                }
+            }
         }
     });
 
