@@ -9,6 +9,9 @@ $(function(){
                 $(this).removeClass("btn-secondary");
                 $(this).addClass("btn-primary");
                 $(this).removeClass("disabled");
+                if($(this).parent().parent().hasClass("bg-success")){
+                    $(this).parent().parent().removeClass("bg-success");
+                }
             }
         }else{
             $(this).removeClass("btn-primary");
@@ -20,7 +23,7 @@ $(function(){
                 if(!$(parent[0].children.item(i)).hasClass("disabled")){
                     break;
                 }else if(i === parent.children("button").length - 1){
-                    parent.css("background-color","#ffffaa");
+                    parent.parent().addClass("bg-success");
                 }
             }
         }
