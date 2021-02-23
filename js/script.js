@@ -3,14 +3,16 @@ console.log("hello,world!");
 var time = new Date();
 
 $(function(){
+
+    $(".crear").hide();
     $(".dayryBtn").on("click",function(){
         if($(this).hasClass("disabled")){
             if(confirm($(this).text() + "を未達成の状態に戻しますか？")){
                 $(this).removeClass("btn-secondary");
                 $(this).addClass("btn-primary");
                 $(this).removeClass("disabled");
-                if($(this).parent().parent().hasClass("bg-success")){
-                    $(this).parent().parent().removeClass("bg-success");
+                if($(this).parent().next().css("display") == "block"){
+                    $(this).parent().next().hide();
                 }
             }
         }else{
@@ -23,7 +25,7 @@ $(function(){
                 if(!$(parent[0].children.item(i)).hasClass("disabled")){
                     break;
                 }else if(i === parent.children("button").length - 1){
-                    parent.parent().addClass("bg-success");
+                    parent.next().show();
                 }
             }
         }

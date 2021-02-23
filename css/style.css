@@ -5,3 +5,7 @@ h1{
 .container{
     border: 2px solid #aaaaaa;
 }
+
+.absolute{
+    position: absolute;
+}
