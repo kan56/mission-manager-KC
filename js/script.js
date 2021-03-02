@@ -1,5 +1,9 @@
 console.log("hello,world!");
 
+const DAY_NUM = 8;
+const WEEK_NUM = 10;
+const MONTH_NUM = 8;
+const QUARTER_NUM = 13;
 
 //データを格納する変数を作成
 var datas = [
@@ -11,7 +15,6 @@ var datas = [
     {id: "#d6",m: new Array(1)},
     {id: "#d7",m: new Array(1)},
     {id: "#d8",m: new Array(1)},
-
     {id: "#w1",m: new Array(4)},
     {id: "#w2",m: new Array(1)},
     {id: "#w3",m: new Array(1)},
@@ -22,7 +25,6 @@ var datas = [
     {id: "#w8",m: new Array(1)},
     {id: "#w9",m: new Array(1)},
     {id: "#w10",m: new Array(1)},
-
     {id: "#m1",m: new Array(1)},
     {id: "#m2",m: new Array(1)},
     {id: "#m3",m: new Array(1)},
@@ -31,7 +33,6 @@ var datas = [
     {id: "#m6",m: new Array(1)},
     {id: "#m7",m: new Array(1)},
     {id: "#m8",m: new Array(4)},
-    
     {id: "#q1",m: new Array(1)},
     {id: "#q2",m: new Array(1)},
     {id: "#q3",m: new Array(1)},
@@ -136,15 +137,30 @@ $(function(){
     $(".dayryBtn").on("click",function() {
         //押されたボタンに対応するdatasのインデックス番号を取得
         var index = $(this).parent().attr("id");
-        index = Number(index.slice(1,index.length));
-
+        var num = Number(index.slice(1,index.length));
+        console.log(num);
+        switch(index.slice(0,1)){
+            case "q":
+                num += MONTH_NUM;
+            case "m":
+                num += WEEK_NUM;
+            case "w":
+                num += DAY_NUM;
+            case "d":
+                break;
+            default:
+                break;
+        }
+        console.log(num);
+        console.log(datas[num]);
+        
         //未達成と達成を切り替える
-        if(datas[index-1].m[$(this).parent().children("button").index(this)] == 1){
+        if(datas[num-1].m[$(this).parent().children("button").index(this)] == 1){
             if(confirm($(this).text() + "を未達成の状態に戻しますか？")){
-                datas[index-1].m[$(this).parent().children("button").index(this)] = 0;
+                datas[num-1].m[$(this).parent().children("button").index(this)] = 0;
             }
         }else{
-            datas[index-1].m[$(this).parent().children("button").index(this)] = 1;
+            datas[num-1].m[$(this).parent().children("button").index(this)] = 1;
         }
         
         //ローカルストレージに保存
