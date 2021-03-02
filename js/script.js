@@ -21,6 +21,14 @@ var datas = [
     {id: "#w8",m: new Array(1)},
     {id: "#w9",m: new Array(1)},
     {id: "#w10",m: new Array(1)},
+    {id: "#m1",m: new Array(1)},
+    {id: "#m2",m: new Array(1)},
+    {id: "#m3",m: new Array(1)},
+    {id: "#m4",m: new Array(1)},
+    {id: "#m5",m: new Array(1)},
+    {id: "#m6",m: new Array(1)},
+    {id: "#m7",m: new Array(1)},
+    {id: "#m8",m: new Array(1)},
 ];
 
 //現在の時間を格納する変数を作成
