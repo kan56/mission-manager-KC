@@ -11,6 +11,7 @@ var datas = [
     {id: "#d6",m: new Array(1)},
     {id: "#d7",m: new Array(1)},
     {id: "#d8",m: new Array(1)},
+
     {id: "#w1",m: new Array(4)},
     {id: "#w2",m: new Array(1)},
     {id: "#w3",m: new Array(1)},
@@ -21,6 +22,7 @@ var datas = [
     {id: "#w8",m: new Array(1)},
     {id: "#w9",m: new Array(1)},
     {id: "#w10",m: new Array(1)},
+
     {id: "#m1",m: new Array(1)},
     {id: "#m2",m: new Array(1)},
     {id: "#m3",m: new Array(1)},
@@ -28,7 +30,21 @@ var datas = [
     {id: "#m5",m: new Array(1)},
     {id: "#m6",m: new Array(1)},
     {id: "#m7",m: new Array(1)},
-    {id: "#m8",m: new Array(1)},
+    {id: "#m8",m: new Array(4)},
+    
+    {id: "#q1",m: new Array(1)},
+    {id: "#q2",m: new Array(1)},
+    {id: "#q3",m: new Array(1)},
+    {id: "#q4",m: new Array(3)},
+    {id: "#q5",m: new Array(1)},
+    {id: "#q6",m: new Array(5)},
+    {id: "#q7",m: new Array(4)},
+    {id: "#q8",m: new Array(4)},
+    {id: "#q9",m: new Array(4)},
+    {id: "#q10",m: new Array(3)},
+    {id: "#q11",m: new Array(4)},
+    {id: "#q12",m: new Array(5)},
+    {id: "#q13",m: new Array(4)},
 ];
 
 //現在の時間を格納する変数を作成
