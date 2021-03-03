@@ -74,9 +74,7 @@ function rerodeData() {
 
 function reloadTime() {
     //現在時刻を入れる関数(比較用)
-    console.log(time + "2");
     var now = new Date();
-    console.log(time  + "3");
     switch(true){
         //年が変わっているとき
         case now.getFullYear() != time.getFullYear():
@@ -104,9 +102,7 @@ function reloadTime() {
             rerodeData();
         break;
     }
-    console.log(time);
     time = new Date();
-    console.log(time);
     localStorage.setItem("datas",JSON.stringify(datas));
     localStorage.setItem('time',JSON.stringify(time));
 }
@@ -127,7 +123,6 @@ $(function(){
     var tempTime = localStorage.getItem('time');
     if(tempTime != null){
         time = JSON.parse(tempTime);
-        console.log(time);
         time = new Date(time);
         reloadTime();
     }
@@ -151,8 +146,6 @@ $(function(){
             default:
                 break;
         }
-        console.log(num);
-        console.log(datas[num]);
         
         //未達成と達成を切り替える
         if(datas[num-1].m[$(this).parent().children("button").index(this)] == 1){
@@ -168,9 +161,18 @@ $(function(){
         rerodeData();
     });
 
-    //時間を表示
-    $("#dayrytime").text("残り" + (23 - time.getHours()) + "時間" + (59 - time.getMinutes()) + "分");
+    
 
+    //時間を表示
+    var tempDay1 = new Date(time.getFullYear(),((time.getMonth() + 1) % 12),1);
+    var tempDay2 = new Date(time.getFullYear(),((12 + 3 + time.getMonth() - ((time.getMonth() + 1) % 3)) % 12),1);
+    console.log(tempDay2);
+    console.log(time);
+    console.log((12 + 3 + time.getMonth() - ((time.getMonth()+ 1) % 3))  % 12);
+    $("#dayrytime").text("残り" + (23 - time.getHours()) + "時間" + (59 - time.getMinutes()) + "分");
+    $("#weekrytime").text("残り" + (6 - time.getDay()) + "日" + (23 - time.getHours()) + "時間" + (59 - time.getMinutes()) + "分");
+    $("#monthrytime").text("残り" + (Math.floor((tempDay1 - time) / (1000*60*60*24))) + "日" + (23 - time.getHours()) + "時間" + (59 - time.getMinutes()) + "分");
+    $("#quotarytime").text("残り" + (Math.floor((tempDay2 - time) / (1000*60*60*24))) + "日" + (23 - time.getHours()) + "時間" + (59 - time.getMinutes()) + "分");
     //一分毎に時間を更新
     setInterval(function(){
         reloadTime();
