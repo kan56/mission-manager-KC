@@ -50,7 +50,6 @@ var datas = [
 
 //現在の時間を格納する変数を作成
 var time = new Date();
-console.log(time + "1");
 
 //datasの内容を反映させる
 function rerodeData() {
@@ -83,11 +82,30 @@ function reloadTime() {
         //月が変わっているとき
         case now.getMonth() != time.getMonth():
             console.log("月が変わった");
+            for(var j = DAY_NUM + WEEK_NUM;j < DAY_NUM + WEEK_NUM + MONTH_NUM;j ++){
+                for(var i = 0;i < datas[j].m.length; i ++){
+                    datas[j].m[i] = 0;
+                }
+            }
+            if(now.getTime() - time.getTime() > 1000*60*60*24*30*3){
+                console.log("クォータリー更新");
+                for(var j = DAY_NUM + WEEK_NUM + MONTH_NUM;j < DAY_NUM + WEEK_NUM + MONTH_NUM + QUARTER_NUM;j ++){
+                    for(var i = 0;i < datas[j].m.length; i ++){
+                        datas[j].m[i] = 0;
+                    }
+                }
+            }else if(Math.floor(time.getMonth() / 3 + 1) * 3 - 1 <= now.getMonth()){
+                for(var j = DAY_NUM + WEEK_NUM + MONTH_NUM;j < DAY_NUM + WEEK_NUM + MONTH_NUM + QUARTER_NUM;j ++){
+                    for(var i = 0;i < datas[j].m.length; i ++){
+                        datas[j].m[i] = 0;
+                    }
+                }
+            }
 
         //日が変わっている時
         case now.getDate() != time.getDate():
             console.log("日が変わった");
-            for(var i = 0;i < datas.length;i ++){
+            for(var i = 0;i < DAY_NUM;i ++){
                 for(var j = 0;j < datas[i].m.length;j ++){
                     datas[i].m[j] = 0;
                 }
@@ -96,11 +114,23 @@ function reloadTime() {
             //週が変わっているとき
             if(now.getTime - time.getTime > 1000*60*60*24*7){
                 console.log("週が変わった");
+                for(var j = DAY_NUM;j < DAY_NUM + WEEK_NUM;j ++){
+                    for(var i = 0;i < datas[j].m.length; i ++){
+                        datas[j].m[i] = 0; 
+                    }
+                }
             }else if(now.getDay() - time.getDay() < 1){
                 console.log("週が変わった");
+                for(var j = DAY_NUM;j < DAY_NUM + WEEK_NUM;j ++){
+                    for(var i = 0;i < datas[j].m.length; i ++){
+                        datas[j].m[i] = 0;
+                    }
+                }
             }
             rerodeData();
-        break;
+            break;
+        default:
+            break;
     }
     time = new Date();
     localStorage.setItem("datas",JSON.stringify(datas));
